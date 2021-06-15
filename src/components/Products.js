@@ -66,13 +66,15 @@ function Products() {
             />
           ))}
       </section>
-      {productSelected && (
-        <ProductEdit
-          product={productSelected}
-          onSave={handleSavedProduct}
-          onDelete={handleDeleteProduct}
-        />
-      )}
+      <section className="edit">
+        {productSelected && (
+          <ProductEdit
+            product={productSelected}
+            onSave={handleSavedProduct}
+            onDelete={handleDeleteProduct}
+          />
+        )}
+      </section>
     </>
   );
 }

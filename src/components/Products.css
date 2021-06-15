@@ -1,6 +1,14 @@
 .products {
   display: flex;
   flex-wrap: wrap;
+
+  width: 50%;
+  float: left;
+}
+.edit {
+  width: 50%;
+  display: block;
+  float: right;
 }
 .search {
   margin: 15px 0;

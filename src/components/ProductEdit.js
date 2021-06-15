@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-// import "./ProductEdit.css";
+import "./ProductEdit.css";
 
 function ProductEdit({ product, onSave, onDelete }) {
   const [obj, setObj] = useState(null);
@@ -9,6 +9,13 @@ function ProductEdit({ product, onSave, onDelete }) {
     setObj({ ...product });
   }, [product]);
 
+  function handleImageChange(e) {
+    const value = e.target.value;
+    var regex = /(http[s]?:\/\/.*\.(?:png|jpg|gif|svg|jpeg))/i;
+    if (regex.test(value)) {
+      setObj({ ...obj, image: value });
+    }
+  }
   function handleNameChange(e) {
     const value = e.target.value;
     if (value.length > 1) {
@@ -32,6 +39,13 @@ function ProductEdit({ product, onSave, onDelete }) {
   if (!obj) return <></>;
   return (
     <div className="product-edit">
+      <div>
+        <img src={obj.image} alt={obj.name} title={obj.description} />
+        <label>
+          Image Url:
+          <input type="text" onChange={handleImageChange} />
+        </label>
+      </div>
       <div>
         <label>
           Name:
