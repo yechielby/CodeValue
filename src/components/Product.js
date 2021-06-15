@@ -1,6 +1,9 @@
 import "./Product.css";
 
-function Product({ product }) {
+function Product({ product, onSelected }) {
+  function handleSelected(e) {
+    onSelected(product);
+  }
   return (
     <div className="product-card">
       <div className="product-image">
@@ -15,6 +18,7 @@ function Product({ product }) {
         <h5>{product.name}</h5>
         <h6>${product.price.toFixed(2)}</h6>
       </div>
+      <button onClick={handleSelected}>Edit</button>
     </div>
   );
 }
