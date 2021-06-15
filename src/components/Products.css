@@ -1,0 +1,7 @@
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+.search {
+  margin: 15px 0;
+}

@@ -1,0 +1,7 @@
+.app-header {
+  background-color: lightblue;
+  color: blue;
+  display: flex;
+  padding: 0 15px;
+  margin-bottom: 15px;
+}
