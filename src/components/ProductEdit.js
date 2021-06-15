@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 // import "./ProductEdit.css";
 
-function ProductEdit({ product, onSave }) {
+function ProductEdit({ product, onSave, onDelete }) {
   const [obj, setObj] = useState(null);
 
   useEffect(() => {
@@ -27,9 +27,6 @@ function ProductEdit({ product, onSave }) {
     if (value > 0) {
       setObj({ ...obj, price: value });
     }
-  }
-  function handleSave() {
-    onSave(obj);
   }
 
   if (!obj) return <></>;
@@ -62,7 +59,8 @@ function ProductEdit({ product, onSave }) {
           </label>
         </div>
       </div>
-      <button onClick={handleSave}>Save</button>
+      <button onClick={() => onSave(obj)}>Save</button>
+      <button onClick={() => onDelete(obj.id)}>Delete</button>
     </div>
   );
 }

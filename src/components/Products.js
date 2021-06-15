@@ -7,7 +7,7 @@ import "./Products.css";
 
 function Products() {
   const [products, setProducts] = useState([]);
-  const [productSelected, setProductSelected] = useState("");
+  const [productSelected, setProductSelected] = useState(null);
   const [query, setQuery] = useState("");
 
   useEffect(() => {
@@ -29,15 +29,19 @@ function Products() {
     setQuery(e.target.value.toLowerCase());
   }
   function handleProductSelected(product) {
-    // console.log(product);
-    // setProductSelected(JSON.stringify(product));
     setProductSelected(product);
   }
+
   function handleSavedProduct(product) {
     const newProducts = products.map((p) =>
       p.id === product.id ? product : p,
     );
     setProducts(newProducts);
+  }
+  function handleDeleteProduct(id) {
+    const newProducts = products.filter((p) => p.id !== id);
+    setProducts(newProducts);
+    setProductSelected(null);
   }
 
   return (
@@ -63,7 +67,11 @@ function Products() {
           ))}
       </section>
       {productSelected && (
-        <ProductEdit product={productSelected} onSave={handleSavedProduct} />
+        <ProductEdit
+          product={productSelected}
+          onSave={handleSavedProduct}
+          onDelete={handleDeleteProduct}
+        />
       )}
     </>
   );
