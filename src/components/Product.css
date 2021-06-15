@@ -12,12 +12,13 @@
   position: relative;
 }
 .product-image img {
-  width: 100%;
+  max-width: 50%;
+  max-height: 100px;
+  display: block;
+  margin: 0 auto;
 }
 
 .product-info {
-  margin-top: auto;
-  padding-top: 20px;
   text-align: center;
 }
 @media (max-width: 920px) {

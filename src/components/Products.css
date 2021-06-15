@@ -1,14 +1,15 @@
 .products {
-  display: flex;
-  flex-wrap: wrap;
-
-  width: 50%;
   float: left;
 }
 .edit {
-  width: 50%;
   display: block;
   float: right;
+}
+.products,
+.edit {
+  width: 50%;
+  overflow-y: auto;
+  height: calc(100vh - 154px);
 }
 .search {
   margin: 15px 0;

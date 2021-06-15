@@ -1,8 +1,16 @@
 .product-edit {
-  padding-left: 15px;
+  padding: 0 15px;
 }
 
-img {
-  max-width: 200px;
+.product-edit img {
+  height: 200px;
+  max-width: 100%;
+  margin: 0 auto;
   display: block;
+}
+
+.product-edit input,
+.product-edit textarea {
+  display: block;
+  width: 100%;
 }

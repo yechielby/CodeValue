@@ -55,7 +55,7 @@ function ProductEdit({ product, onSave, onDelete }) {
       <div>
         <label>
           Description:
-          <input
+          <textarea
             type="text"
             value={obj.description}
             onChange={handleDescriptionChange}
