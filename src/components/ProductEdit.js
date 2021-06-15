@@ -2,40 +2,43 @@ import { useEffect, useState } from "react";
 
 // import "./ProductEdit.css";
 
-function ProductEdit({ product }) {
-  const [obj, setObj] = useState([]);
+function ProductEdit({ product, onSave }) {
+  const [obj, setObj] = useState(null);
 
   useEffect(() => {
-    setObj(product);
+    setObj({ ...product });
   }, [product]);
 
   function handleNameChange(e) {
     const value = e.target.value;
     if (value.length > 1) {
-      //   setObj((obj.name = value));
+      setObj({ ...obj, name: value });
     }
   }
   function handleDescriptionChange(e) {
     const value = e.target.value;
     if (value.length > 1) {
-      //   setObj((obj.description = value));
+      setObj({ ...obj, description: value });
     }
   }
   function handlePriceChange(e) {
-    const value = e.target.value;
+    const value = +e.target.value;
+    console.log(typeof value);
     if (value > 0) {
-      setObj((obj.price = value));
+      setObj({ ...obj, price: value });
     }
   }
-  function onSave() {}
+  function handleSave() {
+    onSave(obj);
+  }
 
-  if (!product) return <></>;
+  if (!obj) return <></>;
   return (
     <div className="product-edit">
       <div>
         <label>
           Name:
-          <input type="text" value={product.name} onChange={handleNameChange} />
+          <input type="text" value={obj.name} onChange={handleNameChange} />
         </label>
       </div>
       <div>
@@ -43,7 +46,7 @@ function ProductEdit({ product }) {
           Description:
           <input
             type="text"
-            value={product.description}
+            value={obj.description}
             onChange={handleDescriptionChange}
           />
         </label>
@@ -53,13 +56,13 @@ function ProductEdit({ product }) {
             <input
               type="number"
               min="0"
-              value={product.price}
+              value={obj.price}
               onChange={handlePriceChange}
             />
           </label>
         </div>
       </div>
-      <button onclick={onSave}>Save</button>
+      <button onClick={handleSave}>Save</button>
     </div>
   );
 }

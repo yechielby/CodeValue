@@ -30,12 +30,18 @@ function Products() {
   }
   function handleProductSelected(product) {
     // console.log(product);
-    setProductSelected(JSON.stringify(product));
+    // setProductSelected(JSON.stringify(product));
+    setProductSelected(product);
+  }
+  function handleSavedProduct(product) {
+    const newProducts = products.map((p) =>
+      p.id === product.id ? product : p,
+    );
+    setProducts(newProducts);
   }
 
   return (
     <>
-      {productSelected}
       <div className="search">
         <label for="search">Search: </label>
         <input type="search" id="search" onChange={handleChange}></input>
@@ -56,7 +62,9 @@ function Products() {
             />
           ))}
       </section>
-      {productSelected && <ProductEdit product={JSON.parse(productSelected)} />}
+      {productSelected && (
+        <ProductEdit product={productSelected} onSave={handleSavedProduct} />
+      )}
     </>
   );
 }
